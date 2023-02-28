@@ -50,3 +50,16 @@ npm run dev
 # formatting src files using prettier
 npm run format
 ```
+
+## Todo
+
+- [x] create vite react app
+- [x] add tooling: eslint, prettier
+- [x] add tailwindcss
+- [ ] add react router and setup basic routes
+- [ ] basic header and main styling
+- [ ] add BlogPosts context
+- [ ] display all the blog posts in home page
+- [ ] add individual blog posts (or details) route
+- [ ] add new blog post route
+- [ ] edit, like and delete blog post functionality in details route
