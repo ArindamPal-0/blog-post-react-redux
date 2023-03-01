@@ -8,18 +8,20 @@ const ZPost = z.object({
     like: z.boolean().optional(),
 });
 
-type Post = z.infer<typeof ZPost>;
+export type Post = z.infer<typeof ZPost>;
 
-const ZEditPost = ZPost.pick({ title: true, content: true })
-    .partial()
-    .merge(ZPost.pick({ id: true }));
+const ZAddPost = ZPost.pick({ title: true, content: true });
+
+export type AddPost = z.infer<typeof ZAddPost>;
+
+const ZEditPost = ZAddPost.partial().merge(ZPost.pick({ id: true }));
 
 type EditPost = z.infer<typeof ZEditPost>;
 
 type BlogContextType = {
     posts: Post[];
-    addPost?: (post: Post) => void;
-    editPost?: (post: Post) => void;
+    addPost?: (post: AddPost) => void;
+    editPost?: (post: EditPost) => void;
     deletePost?: (postId: number) => void;
     likePost?: (postId: number, like: boolean) => void;
 };
@@ -72,11 +74,14 @@ export default function BlogContextProvider({
 }) {
     const [posts, setPosts] = useState<Post[]>(initialPosts);
 
-    function addPost(post: Post) {
-        const parsedResult = ZPost.safeParse(post);
+    function addPost(post: AddPost) {
+        const parsedResult = ZAddPost.safeParse(post);
 
         if (parsedResult.success) {
-            setPosts([...posts, parsedResult.data]);
+            setPosts([
+                ...posts,
+                { ...parsedResult.data, id: posts.length + 1, like: false },
+            ]);
         } else {
             console.error("Invalid Post object passed.");
         }

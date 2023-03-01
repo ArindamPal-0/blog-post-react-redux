@@ -11,6 +11,8 @@ const router = createBrowserRouter([
     {
         path: import.meta.env.BASE_URL,
         element: <Layout />,
+        // FIXME: change to error page
+        errorElement: <NotFoundPage />,
         children: [
             {
                 index: true,

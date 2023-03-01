@@ -14,21 +14,26 @@
 # installing dependencies
 pnpm install
 
-# building the vite project
+# build and preview the vite project
 pnpm build
-
-# previewing the built vite project
 pnpm preview
+
+# build and preview with base url
+pnpm build:base
+pnpm preview:base
 
 # or
 
 # installing dependencies
 npm install
-# building the vite project
-npm run build
 
-# previewing the built vite project
+# build and preview the vite project
+npm run build
 npm run preview
+
+# build and preview with base url
+npm run build:base
+npm run preview:base
 ```
 
 ## Dev Setup
@@ -36,19 +41,39 @@ npm run preview
 ```powershell
 # installing dependencies
 pnpm install
+
 # running vite dev server
 pnpm dev
+
 # formatting src files using prettier
 pnpm format
 
-# or
+# build and preview the vite project
+pnpm build
+pnpm preview
+
+# build and run with base url
+pnpm build:base
+pnpm preview:base
+
+# (or)
 
 # installing dependencies
 npm install
+
 # running vite dev server
 npm run dev
+
 # formatting src files using prettier
 npm run format
+
+# build and preview the vite project
+npm run build
+npm run preview
+
+# build and preview with base url
+npm run build:base
+npm run preview:base
 ```
 
 ## Todo
@@ -60,8 +85,15 @@ npm run format
 - [x] basic header and main styling
 - [x] add Blog context
 - [x] display all the blog posts in home page
-- [ ] add individual blog posts (or details) route
-- [ ] add new blog post route
-- [ ] edit, like and delete blog post functionality in details route
+- [x] add individual blog posts (or details) route
+- [x] implement `like` :heart: functionality
+- [x] add new blog post component
+- [ ] create edit and delete modals
+- [ ] edit and delete blog post functionality in details route
 - [ ] add responsiveness to the UI
 - [ ] convert react context into redux store
+
+
+## Mentions
+
+SVG generated from [fffuel](https://fffuel.co/) :heart:

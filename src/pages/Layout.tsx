@@ -7,7 +7,7 @@ function Layout() {
     return (
         <section className="flex h-screen flex-col">
             <Header />
-            <main className="flex flex-grow flex-col items-center justify-start gap-2 py-8">
+            <main className="flex flex-grow flex-col items-center justify-start gap-2 overflow-y-scroll scroll-smooth py-4">
                 <Outlet />
             </main>
             <Footer />

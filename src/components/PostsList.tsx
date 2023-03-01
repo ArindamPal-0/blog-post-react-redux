@@ -8,17 +8,17 @@ function PostsList() {
         <section className="my-4 flex w-1/2 flex-col items-center justify-start gap-2">
             <h2 className="text-xl font-bold underline">Posts List</h2>
             {posts.map((post) => (
-                <section
+                <article
                     className="w-full rounded border bg-amber-400 p-2"
                     key={post.id}
                 >
                     <Link
-                        className="hover:underline"
+                        className="text-lg font-semibold hover:underline"
                         to={`${import.meta.env.BASE_URL}posts/${post.id}`}
                     >
                         {post.title}
                     </Link>
-                </section>
+                </article>
             ))}
         </section>
     );
