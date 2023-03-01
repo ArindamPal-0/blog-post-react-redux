@@ -9,7 +9,7 @@ import BlogContextProvider from "./context/BlogContext";
 
 const router = createBrowserRouter([
     {
-        path: "/",
+        path: import.meta.env.BASE_URL,
         element: <Layout />,
         children: [
             {
