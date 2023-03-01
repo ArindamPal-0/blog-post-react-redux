@@ -56,10 +56,12 @@ npm run format
 - [x] create vite react app
 - [x] add tooling: eslint, prettier
 - [x] add tailwindcss
-- [ ] add react router and setup basic routes
-- [ ] basic header and main styling
-- [ ] add BlogPosts context
+- [x] add react router and setup basic routes
+- [x] basic header and main styling
+- [x] add Blog context
 - [ ] display all the blog posts in home page
 - [ ] add individual blog posts (or details) route
 - [ ] add new blog post route
 - [ ] edit, like and delete blog post functionality in details route
+- [ ] add responsiveness to the UI
+- [ ] convert react context into redux store

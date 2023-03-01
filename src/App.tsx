@@ -1,10 +1,38 @@
+import { RouterProvider, createBrowserRouter } from "react-router-dom";
+
+import HomePage from "./pages/HomePage";
+import Layout from "./pages/Layout";
+import NotFoundPage from "./pages/NotFoundPage";
+import PostsPage from "./pages/PostsPage";
+
+import BlogContextProvider from "./context/BlogContext";
+
+const router = createBrowserRouter([
+    {
+        path: "/",
+        element: <Layout />,
+        children: [
+            {
+                index: true,
+                element: <HomePage />,
+            },
+            {
+                path: "posts/:postId",
+                element: <PostsPage />,
+            },
+            {
+                path: "*",
+                element: <NotFoundPage />,
+            },
+        ],
+    },
+]);
+
 function App() {
     return (
-        <>
-            <h1 className="text-3xl font-bold text-amber-500 underline">
-                Hello, World!
-            </h1>
-        </>
+        <BlogContextProvider>
+            <RouterProvider router={router} />
+        </BlogContextProvider>
     );
 }
 

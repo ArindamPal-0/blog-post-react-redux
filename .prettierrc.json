@@ -1,5 +1,5 @@
 {
-	"printWidth": 80,
+    "printWidth": 80,
     "tabWidth": 4,
     "useTabs": false,
     "semi": true,
@@ -9,8 +9,11 @@
     "bracketSpacing": true,
     "bracketSameLine": false,
     "arrowParens": "always",
-    "importOrder": ["components/(.*)", "^[./]"],
-    "importOrderSepartion": true,
+    "importOrder": ["components/(.*)", "pages/(.*)", "context/(.*)", "^[./]"],
+    "importOrderSeparation": true,
     "importOrderSortSpecifiers": true,
-    "plugins": ["@trivago/prettier-plugin-sort-imports", "prettier-plugin-tailwindcss"]
+    "plugins": [
+        "@trivago/prettier-plugin-sort-imports",
+        "prettier-plugin-tailwindcss"
+    ]
 }
