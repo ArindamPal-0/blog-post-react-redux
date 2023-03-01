@@ -2,6 +2,9 @@ import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { z } from "zod";
 
+import DeleteModal from "../components/DeleteModal";
+import EditModal from "../components/EditModal";
+
 import type { Post } from "../context/BlogContext";
 import { useBlog } from "../context/BlogContext";
 
@@ -12,10 +15,14 @@ import TrashIcon from "../assets/trash.svg";
 
 function PostsPage() {
     const { postId } = useParams();
-    const { posts, likePost } = useBlog();
+    const { posts, likePost, editPost, deletePost } = useBlog();
 
     const [post, setPost] = useState<Post | undefined>();
     const [error, setError] = useState<string | undefined>(undefined);
+
+    const [editModal, setEditModal] = useState<boolean>(false);
+    const [deleteModal, setDeleteModal] = useState<boolean>(false);
+
     useEffect(() => {
         setPost(undefined);
         setError(undefined);
@@ -52,31 +59,64 @@ function PostsPage() {
 
     return (
         <>
+            {/* Modal Code */}
+            {post && editModal && (
+                <EditModal
+                    title={post.title}
+                    content={post.content}
+                    closeModal={() => setEditModal(false)}
+                    editPost={(title: string, content: string) => {
+                        if (editPost) {
+                            editPost({ title, content, id: post.id });
+                        }
+                    }}
+                />
+            )}
+            {post && deleteModal && (
+                <DeleteModal
+                    closeModal={() => setDeleteModal(false)}
+                    deletePost={() => {
+                        if (deletePost) {
+                            deletePost(post.id);
+                        }
+                    }}
+                />
+            )}
+
+            {/* Post Details Page */}
             <Link
                 className="text-blue-600 underline hover:text-blue-400"
                 to={import.meta.env.BASE_URL}
             >
                 Go to Home Page
             </Link>
-            <section className="flex w-3/4 flex-col items-start justify-start rounded border bg-amber-200 px-4 py-2">
+            <section className="flex w-3/4 flex-col items-start justify-start rounded border bg-gradient-to-b from-red-500 via-amber-400 to-amber-300 px-4 py-4">
                 <section className="flex w-full items-center justify-between">
-                    <span className="rounded border-2 border-amber-600 bg-white py-1 px-2 text-xl font-bold text-amber-600">
+                    <span className="rounded bg-white py-1 px-2 text-xl font-bold text-amber-600">
                         Posts - {postId}
                     </span>
-                    <div className="flex gap-1">
-                        <button className="rounded-full bg-white p-1 hover:bg-gray-50">
-                            <img src={PencilIcon} alt="edit icon" />
-                        </button>
-                        <button className="rounded-full bg-white p-1 hover:bg-red-50">
-                            <img
-                                style={{
-                                    filter: "invert(13%) sepia(89%) saturate(5675%) hue-rotate(358deg) brightness(101%) contrast(73%)",
-                                }}
-                                src={TrashIcon}
-                                alt="delete icon"
-                            />
-                        </button>
-                    </div>
+                    {post && (
+                        <div className="flex gap-1">
+                            <button
+                                className="rounded-full bg-white p-1 hover:bg-gray-50"
+                                onClick={() => setEditModal(true)}
+                            >
+                                <img src={PencilIcon} alt="edit icon" />
+                            </button>
+                            <button
+                                className="rounded-full bg-white p-1 hover:bg-red-50"
+                                onClick={() => setDeleteModal(true)}
+                            >
+                                <img
+                                    style={{
+                                        filter: "invert(13%) sepia(89%) saturate(5675%) hue-rotate(358deg) brightness(101%) contrast(73%)",
+                                    }}
+                                    src={TrashIcon}
+                                    alt="delete icon"
+                                />
+                            </button>
+                        </div>
+                    )}
                 </section>
                 <div className="p-2" />
                 {error && (

@@ -8,17 +8,15 @@ function PostsList() {
         <section className="my-4 flex w-1/2 flex-col items-center justify-start gap-2">
             <h2 className="text-xl font-bold underline">Posts List</h2>
             {posts.map((post) => (
-                <article
-                    className="w-full rounded border bg-amber-400 p-2"
+                <Link
+                    className="group w-full rounded border border-amber-400 bg-gradient-to-r from-amber-500 via-amber-400 to-transparent p-2"
                     key={post.id}
+                    to={`${import.meta.env.BASE_URL}posts/${post.id}`}
                 >
-                    <Link
-                        className="text-lg font-semibold hover:underline"
-                        to={`${import.meta.env.BASE_URL}posts/${post.id}`}
-                    >
+                    <h3 className="text-lg font-semibold group-hover:underline">
                         {post.title}
-                    </Link>
-                </article>
+                    </h3>
+                </Link>
             ))}
         </section>
     );

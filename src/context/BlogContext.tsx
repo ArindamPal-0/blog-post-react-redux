@@ -67,6 +67,8 @@ const initialPosts: Post[] = [
     },
 ];
 
+let postsCount = initialPosts.length;
+
 export default function BlogContextProvider({
     children,
 }: {
@@ -78,9 +80,10 @@ export default function BlogContextProvider({
         const parsedResult = ZAddPost.safeParse(post);
 
         if (parsedResult.success) {
+            postsCount++;
             setPosts([
                 ...posts,
-                { ...parsedResult.data, id: posts.length + 1, like: false },
+                { ...parsedResult.data, id: postsCount, like: false },
             ]);
         } else {
             console.error("Invalid Post object passed.");

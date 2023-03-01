@@ -5,7 +5,7 @@ import Header from "../components/Header";
 
 function Layout() {
     return (
-        <section className="flex h-screen flex-col">
+        <section className="flex h-screen flex-col bg-amber-100">
             <Header />
             <main className="flex flex-grow flex-col items-center justify-start gap-2 overflow-y-scroll scroll-smooth py-4">
                 <Outlet />

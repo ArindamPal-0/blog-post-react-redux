@@ -23,7 +23,7 @@ function AddPost() {
     }
 
     return (
-        <section className="flex w-1/2 flex-col items-center justify-start gap-1 rounded border pt-2 pb-4">
+        <section className="flex w-3/4 flex-col items-center justify-start gap-1 rounded border pt-2 pb-4">
             <h2 className="text-xl font-bold underline">Add Post</h2>
             <form
                 onSubmit={handleSubmit}
