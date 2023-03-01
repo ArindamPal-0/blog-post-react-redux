@@ -59,7 +59,7 @@ npm run format
 - [x] add react router and setup basic routes
 - [x] basic header and main styling
 - [x] add Blog context
-- [ ] display all the blog posts in home page
+- [x] display all the blog posts in home page
 - [ ] add individual blog posts (or details) route
 - [ ] add new blog post route
 - [ ] edit, like and delete blog post functionality in details route
