@@ -6,7 +6,7 @@ function PostsPage() {
         <>
             <Link
                 className="text-blue-600 underline hover:text-blue-400"
-                to="/"
+                to={import.meta.env.BASE_URL}
             >
                 Go to Home Page
             </Link>

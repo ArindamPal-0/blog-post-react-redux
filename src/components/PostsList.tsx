@@ -12,7 +12,10 @@ function PostsList() {
                     className="w-full rounded border bg-amber-400 p-2"
                     key={post.id}
                 >
-                    <Link className="hover:underline" to={`/posts/${post.id}`}>
+                    <Link
+                        className="hover:underline"
+                        to={`${import.meta.env.BASE_URL}posts/${post.id}`}
+                    >
                         {post.title}
                     </Link>
                 </section>
