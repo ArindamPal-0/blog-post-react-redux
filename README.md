@@ -88,8 +88,8 @@ npm run preview:base
 - [x] add individual blog posts (or details) route
 - [x] implement `like` :heart: functionality
 - [x] add new blog post component
-- [ ] create edit and delete modals
-- [ ] edit and delete blog post functionality in details route
+- [x] create edit and delete modals
+- [x] edit and delete blog post functionality in details route
 - [ ] add responsiveness to the UI
 - [ ] convert react context into redux store
 
